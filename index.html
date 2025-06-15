@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Billing System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+  <h1>Restaurant Billing System</h1>
+
+  <input type="text" id="customerName" placeholder="Enter customer name" />
+  <input type="tel" id="contactNumber" placeholder="Enter contact number" />
+  <input type="text" id="customerAddress" placeholder="Enter address" />
+  <input type="url" id="liveLocation" placeholder="Paste live location URL (Google Maps)" />
+  
+ 
+  <select id="deliveryType" required>
+    <option value="">Select Delivery Type</option>
+    <option value="Pickup">Pickup</option>
+    <option value="Home Delivery">Home Delivery</option>
+  </select>
+
+  <span id="currentDate"></span>
+</div>
+
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for a dish..." oninput="filterMenu()" />
+  </div>
+
+  <div class="menu-container" id="menuContainer"></div>
+
+  <div class="bill">
+    <h2>Bill</h2>
+    <ul id="billItems"></ul>
+
+    <h3>Subtotal: ₹<span id="subtotalAmount">0</span></h3>
+    <h3>GST (18%): ₹<span id="gstAmount">0</span></h3>
+    <h3><strong>Total: ₹<span id="totalAmount">0</span></strong></h3>
+
+    <button onclick="printBill()">Print Bill</button>
+    <button onclick="resetOrder()">Reset Order</button>
+    <button onclick="sendOrderToBackend()">Place Order</button>
+  </div>
+
+  <script>
+   
+    document.addEventListener("DOMContentLoaded", function () {
+      const dateElement = document.getElementById("currentDate");
+      const currentDate = new Date().toLocaleString();
+      dateElement.textContent = "Date & Time: " + currentDate;
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
